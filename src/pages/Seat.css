@@ -1,0 +1,57 @@
+.movie-container{
+    background-color: black;
+
+}
+.seat{
+    background-color: rgb(255, 255, 255);
+    height: 25px;
+    margin: 10px;
+    width: 25px;
+    border-radius: 5px;
+}
+.rows{
+    display: flex;
+}
+.seat.occupied{
+    background-color: rgb(68, 66, 66);
+}
+.seat.selected{
+    background-color: rgb(33, 228, 12);
+}
+.seat:nth-of-type(3){
+    margin-right: 40px;
+}
+.seat:nth-of-type(8){
+    margin-right: 40px;
+}
+.seat:nth-last-of-type(3){
+    margin-left: 40px;
+}
+.showcase{
+    background-color: rgba(42, 42, 42, 0.248);
+    padding: 10px;
+    border-radius: 10px;
+}
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  
+  .showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+  }
+  .screen {
+    background-color: #ffffff;
+    height: 100px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotatex(-45deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+  }
+  .seat-container{
+    perspective: 800px;
+    margin-bottom: 30px;
+  }
+
+  

@@ -1,0 +1,21 @@
+.movie-card img{
+    height:430px;
+}
+.movie-card{
+    transition:  500ms;
+}
+.movie-card:hover{
+    transform: scale(1.05);
+    transition:  500ms;
+}
+.overlap Button{
+    margin-top: 380px;
+    visibility: hidden;
+    transition:  500ms;
+    opacity: .1;
+}
+.card:hover .overlap Button{
+    margin-top: 350px;
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,28 @@
+.main-container{
+    height: 120vh;
+    background-color: rgb(29, 29, 69);
+}
+.sidebar-btn {
+    width: 200px;
+}
+.admin-card{
+    background: linear-gradient(to bottom, #ff0000 , #f95d03e3 );
+}
+.card1{
+    background-color: #44b44e;
+    height: 92px;
+    color: white;
+}
+.card2{
+    background-color: #00bfff;
+    height: 92px;
+    color: white;
+}
+.card3{
+    background-color: #7c7c7c;
+     height: 92px;
+     color: white;
+}
+.movieAddCard{
+    background-color: rgb(16, 16, 58);
+}

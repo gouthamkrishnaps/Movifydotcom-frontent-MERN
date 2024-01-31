@@ -1,0 +1,14 @@
+.landing-page{
+    background-image: url('https://wallpapercave.com/wp/wp6407012.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    /* background-color: rgb(255, 97, 39); */
+}
+.blur{
+    backdrop-filter: blur(15px);
+    height: 80vh;
+    width: 80%;
+    margin: 60px;
+    padding: 30px;
+}

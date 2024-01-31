@@ -1,0 +1,20 @@
+/* .userlockicon{
+    background-color: rgb(57, 0, 136);
+    position: absolute;
+    height: 90px;
+    width: 90px;
+    margin-top: -380px;
+} */
+.auth-lock{
+    margin-top: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+}
+.login-container{
+    background-image: url('https://img.freepik.com/free-vector/abstract-geometric-wireframe-background_52683-59421.jpg?w=996&t=st=1704820705~exp=1704821305~hmac=3cdeb3429ceb14f6d4673c516a4acaa302b0e804d80bcee235677cef2028dfbe');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.auth-card{
+    backdrop-filter: blur(2px);
+}
