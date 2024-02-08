@@ -1,6 +1,10 @@
 .main-container{
     height: 120vh;
-    background-color: rgb(29, 29, 69);
+    background-color: rgb(0, 0, 0);
+}
+.sidebar{
+    background-color: rgb(27, 41, 48);
+    min-height: 120vh;
 }
 .sidebar-btn {
     width: 200px;

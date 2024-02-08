@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Admin.css'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import Sidebar from './Sidebar'
-import { uploadMovieAPI } from '../services/allAPI'
+import { uploadMovieAPI, uploadTheatreAPI } from '../services/allAPI'
 import swal from 'sweetalert'
 
 
@@ -22,7 +22,8 @@ function Dashboard({addtheatres}) {
     })
     console.log(movie);
 
-    const handleClear = async(e)=>{
+
+    const handleMovieClear = async(e)=>{
         e.preventDefault()
 
         setMovie({
@@ -40,7 +41,7 @@ function Dashboard({addtheatres}) {
         })
     }
 
-    const handleUpload = async()=>{
+    const handleMovieUpload = async()=>{
 
 
         const {title,poster,coverimg, rated, released, runtime, genre, director, actors, language, plot} = movie
@@ -100,6 +101,56 @@ function Dashboard({addtheatres}) {
         }
 
     }
+
+    const [theatre,setTheatre] = useState({
+        name:"",
+        location:"",
+        rating:""
+    })
+
+    const handleTheatreUpload = async(e)=>{
+        e.preventDefault()
+        const {name,location,rating} = theatre
+
+        if(!name|| !location|| !rating){
+            swal({
+                title: 'Oops',
+                text: `Please fill the form completely`,
+                icon: 'info',
+            });
+        }
+        else{
+            const reqBody = new FormData()
+
+
+            reqBody.append("name",name)
+            reqBody.append("location",location)
+            reqBody.append("rating",rating)
+            const result = await uploadTheatreAPI(reqBody)
+            //console.log(result);
+            if(result.status===200){
+                swal({
+                    title: 'Good Job 😍',
+                    text: `${theatre.name} Successfully Added`,
+                    icon: 'success',
+                });
+                setTheatre({
+                    name:"",
+                    location:"",
+                    rating:""
+                })
+            }
+            else{
+            console.log(result.response.data);
+            swal({
+                title: 'Oh sorry..😶',
+                text: `${result.response.data} `,
+                icon: 'error',
+            });
+            }
+        }
+    }
+    console.log(theatre);
   return (
     <div className=' main-container'>
         <Row>
@@ -169,29 +220,29 @@ function Dashboard({addtheatres}) {
                     </Form.Group>
 
                     <div className='d-flex gap-3 w-100'>
-                        <Button variant='danger' className='w-100 rounded' onClick={handleUpload}>Add Movie</Button>
-                        <Button variant='primary' className='w-100 rounded' onClick={handleClear}>Cancel</Button>
+                        <Button variant='danger' className='w-100 rounded' onClick={handleMovieUpload}>Add Movie</Button>
+                        <Button variant='primary' className='w-100 rounded' onClick={handleMovieClear}>Cancel</Button>
                     </div>
                 </div>
             </div>
             :
-            <div className='text-light d-flex justify-content-center w-100' style={{height:'100vh'}}>
-                <div className='movieAddCard w-50 shadow p-5 rounded-5 mb-5' style={{marginTop:'100px'}}>
+            <div className='text-light d-flex justify-content-center w-100' >
+                <div className='movieAddCard w-50 shadow p-5 rounded-5' style={{marginTop:'100px'}}>
                     <h2 className='fw-bold text-center'>Add Theatres</h2>
                     <Form.Group className="mb-3 w-100" controlId="exampleForm.ControlInput5">
                         <Form.Label>Theatre Name</Form.Label>
-                        <Form.Control className='rounded' type="text" placeholder='Movie Name'/>
+                        <Form.Control value={theatre.name} onChange={(e)=>setTheatre({...theatre,name:e.target.value})}  className='rounded' type="text" placeholder='Theatre name'/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
                         <Form.Label>Theatre Location(Address)</Form.Label>
-                        <Form.Control className='rounded' as="textarea" placeholder='Write down'/>
+                        <Form.Control value={theatre.location} onChange={(e)=>setTheatre({...theatre,location:e.target.value})} className='rounded' as="textarea" placeholder='Write down'/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
                         <Form.Label>Theatre rating</Form.Label>
-                        <Form.Control className='rounded' type="number" placeholder='Movie Name'/>
+                        <Form.Control value={theatre.rating} onChange={(e)=>setTheatre({...theatre,rating:e.target.value})} className='rounded' type="text" placeholder='Theatre rating'/>
                     </Form.Group>
                     <div className='d-flex gap-3 w-100'>
-                        <Button variant='danger' className='w-100 rounded'>Add Theatre</Button>
+                        <Button variant='danger' className='w-100 rounded' onClick={handleTheatreUpload}>Add Theatre</Button>
                         <Button variant='primary' className='w-100 rounded'>Cancel</Button>
                     </div>
                 </div>

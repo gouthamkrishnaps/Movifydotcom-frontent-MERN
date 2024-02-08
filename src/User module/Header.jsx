@@ -6,17 +6,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
 
-function Header() {
-    
+function Header({isAdmin}) {
+    console.log(isAdmin);
   return (
     <div>
-        <Navbar className='shadow' expand="lg" data-bs-theme='dark' style={{backgroundColor:'black'}}>
+        <Navbar sticky='top' className='shadow' expand="lg" data-bs-theme='dark' style={{backgroundColor:'black'}}>
         <Container>
-            <h3 className='logoname text-light'>Movifydot<span style={{color:'red'}}>com</span></h3>
+            <h3 className='logoname text-light'><Link  style={{textDecoration:'none',color:'white'}} to={'/home'}>Movifydot</Link><span style={{color:'red'}}>com</span></h3>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='m-auto'>
-                <Link to={'/dashboard'} style={{textDecoration:'none',color:'white'}}>Admin Dashboard</Link>
+
+                <a href='/dashboard' className='btn btn-danger rounded-pill'>Admin Dashboard</a>
+
             </Nav>
             <Nav className="text-light">
             <Form inline>
@@ -33,19 +35,6 @@ function Header() {
                 </Col>
                 </Row>
             </Form>
-                {/* <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                    Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                </NavDropdown.Item>
-                </NavDropdown> */}
             </Nav>
             </Navbar.Collapse>
         </Container>

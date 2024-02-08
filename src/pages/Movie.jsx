@@ -22,33 +22,32 @@ function Movie() {
   },[])
   return (
     <div className='movie-bg' style={{backgroundColor:'black'}}>
+      <Container>
       <Row>
-        <Col lg={5} className='justify-content-center align-items-center d-flex'>
-          <div className='w-50'>
+        <Col lg={4} >
+          <div className='d-flex '>
           <Card className="card movie-card bg-dark text-white rounded-4">
           <Card.Img src={getMovie.poster} width={'250px'} className=' rounded-4' alt="Card image" />
           </Card>
           </div>
         </Col>
-        <Col lg={7}>
+        <Col lg={8}>
           <div>
             <div className=" position-absolute ">
               <img className='cover-img' src={getMovie.coverimg}  alt="" height={'500px'} width={'100%'}/>
             </div>
             <div className="coverover position-relative" style={{width:'100%',height:'500px'}}>
-                <Button className='booking-btn rounded' variant='danger' size='lg'><Link style={{textDecoration:'none',color:'white'}} to={'/theatres'}>Book Tickets</Link></Button>
-                <div className='d-flex justify-content-center align-items-center'>
-                  <h1 className='Moviename'>{getMovie.title}</h1>
-                </div>
+                <Button className='booking-btn rounded' variant='danger' size='lg'><Link style={{textDecoration:'none',color:'white'}} to={`/theatres/${getMovie._id}`}>Book Tickets</Link></Button>
             </div>
           </div>
         </Col>
         
       </Row>
-      <Container>
+
+
         <div className="movie-content pb-2" style={{color:'white'}}>
           <h1 className='fw-bold mb-3'>{getMovie.title}</h1>
-          <h3 className='fw-bold mb-4 text-center bg-danger text-light rounded w-25 p-3'>Rating : {getMovie.rated}</h3>
+          <h3 className='fw-bold mb-4 text-light rounded'>Rating : <i class="fa-solid fa-star" style={{color:'gold'}}></i> {getMovie.rated}</h3>
           <Row>
             <Col>
               <div className='info-card text-light rounded p-3 mb-2' style={{height:"130px"}}>

@@ -2,19 +2,10 @@
     background-image: linear-gradient( to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
 }
 .booking-btn{
-    margin-left: 100px;
-    margin-top: 400px;
+    
+    margin-top: 380px;
 }
-.Moviename{
-    margin-top: -1200px;
-    color: white;
-    transition: 500ms;
-    font-weight: bold;
-}
-.coverover:hover .Moviename{
-    margin-top: -400px;
-    transition: 500ms;
-}
+
 .coverover:hover .cover-img{
     transform: scale(1.3);
 }

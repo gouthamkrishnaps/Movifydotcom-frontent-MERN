@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Auth.css'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import animation1 from '../assets/Animation a1.json'
 import Lottie from 'lottie-react'
 import { Link, useNavigate } from 'react-router-dom'
-import { loginAPI, registerAPI } from '../services/allAPI'
+import {  loginAPI, registerAPI } from '../services/allAPI'
 import swal from 'sweetalert'
 
 
 
-function Auth({register}) {
+function Auth({register,setData}) {
     const navigate = useNavigate()
     const [userData,setUserdata] = useState({
         name:"",
         email:"",
         password:""
     })
-    console.log(userData);
+    //console.log(userData);
 
     const handleRegister = async(e)=>{
         e.preventDefault()
@@ -56,6 +56,7 @@ function Auth({register}) {
         }
     }
 
+    
     const handleLogin = async(e)=>{
         e.preventDefault()
         const {email,password} = userData
@@ -69,15 +70,17 @@ function Auth({register}) {
         else{
             const result = await loginAPI(userData)
             console.log(result);
+
             if(result.status === 200){
+                sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
+                setData(userData)
+                //sessionStorage.setItem("token",result.data.token)
                 swal({
                     title: 'Good Job 😍',
                     text: 'Login Successfull',
                     icon: 'success',
                 });
-
-                sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
-                //sessionStorage.setItem("token",result.data.token)
+    
                 setUserdata({
                     email:"",
                     password:""
@@ -98,6 +101,11 @@ function Auth({register}) {
             }
         }
     }
+
+
+
+
+    
   return (
     <div style={{height:'100vh'}} className='login-container'>
         <Row>
@@ -129,8 +137,8 @@ function Auth({register}) {
                         </Form.Group>
                         <div className='text-center mb-3'>
                             {register?
-                                <Button onClick={handleRegister} className='btn btn-warning rounded-pill'>Register</Button>:
-                                <Button  onClick={handleLogin} className='btn btn-success rounded-pill'>Login</Button>
+                                <Button onClick={handleRegister} className='btn btn-warning w-100 rounded-pill'>Register</Button>:
+                                <Button  onClick={handleLogin} className='btn btn-success w-100 rounded-pill'>Login</Button>
                             }
                         </div>
                         {register?
