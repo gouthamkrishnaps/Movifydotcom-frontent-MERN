@@ -35,7 +35,7 @@ function Home() {
   console.log(isAdmin);
 
   useEffect(()=>{
-    getAllMovies(),
+    getAllMovies()
     checkAdmin()
   },[])
   return (

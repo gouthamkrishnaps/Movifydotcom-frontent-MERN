@@ -255,7 +255,7 @@ function List({theatrelist}) {
     }
   
     useEffect(()=>{
-      getAllMovies(),
+      getAllMovies()
       getThreatre()
     },[])
 

@@ -25,7 +25,7 @@ function Theatres() {
     }
 
     useEffect(()=>{
-        getThreatre(),
+        getThreatre()
         getAllMovies()
     },[])
 
