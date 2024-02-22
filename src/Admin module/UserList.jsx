@@ -4,6 +4,7 @@ import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import Sidebar from './Sidebar'
 import { deleteUserAPI, getAllUsersAPI } from '../services/allAPI'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
 
 function UserList() {
     const [allUsers,setAllUsers] = useState([])

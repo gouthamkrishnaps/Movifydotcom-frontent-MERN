@@ -3,6 +3,7 @@ import { Button, Col, Row, Table } from 'react-bootstrap'
 import Sidebar from './Sidebar'
 import { deleteMovieAPI, deleteTheatreAPI, editMovieAPI, editTheatreAPI, getAllMoviesAPI, getAllTheatresAPI } from '../services/allAPI'
 import Modal from 'react-bootstrap/Modal';
+import swal from 'sweetalert';
 
 
 function List({theatrelist}) {
