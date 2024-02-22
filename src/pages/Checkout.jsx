@@ -5,9 +5,11 @@ import './checkout.css'
 import { useParams } from 'react-router-dom';
 import { getAllMoviesAPI } from '../services/allAPI';
 import { Col, Row } from 'react-bootstrap';
+import { usePDF } from 'react-to-pdf';
 
 
 function Checkout() {
+    const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
     const [getMovie,setGetMovie] = useState({})
     const {id} = useParams()
     console.log(id);
@@ -25,8 +27,8 @@ function Checkout() {
   },[])
 
   return (
-    <div className=' d-flex justify-content-center align-items-center flex-column' style={{backgroundColor:"black"}}>
-        <div className='ticket bg-light d-flex flex-column p-5 shadow m-5 '>
+    <div className=' d-flex justify-content-center align-items-center flex-column' style={{backgroundColor:"black"}} >
+        <div className='ticket bg-light d-flex flex-column p-5 shadow m-5 '  ref={targetRef}>
             <div style={{width:"300px"}}>
             <Row>
                     <Col lg={5}>
@@ -63,7 +65,7 @@ function Checkout() {
             </div>
         </div>
         
-        <Button className='btn btn-danger m-3 px-3 rounded'>Checkout</Button>
+        <Button variant='danger' className='rounded' onClick={() => toPDF()}>Download Your Ticket</Button>
     </div>
   )
 }

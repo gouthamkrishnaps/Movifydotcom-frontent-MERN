@@ -12,3 +12,7 @@
     margin: 60px;
     padding: 30px;
 }
+.admin-panel{
+    background: linear-gradient(to bottom right, #243718 , rgba(33, 170, 23, 0.599) );
+    /* background-color: rgb(234, 255, 0); */
+}

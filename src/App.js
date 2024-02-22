@@ -12,28 +12,14 @@ import Dashboard from './Admin module/Dashboard';
 import { useEffect, useState } from 'react';
 import Checkout from './pages/Checkout';
 import List from './Admin module/List';
-
-
-
+import UserList from './Admin module/UserList';
 
 function App() {
-  const [data,setData] = useState({})
-  const [isAdmin , setIsAdmin] = useState(false)
-  console.log(data);
-    const checkAdmin = ()=>{
-      //e.preventDefault()
-      if(data.email === 'goutham@gmail.com'){
-        setIsAdmin(true)
-      }
-    }
-    
-    useEffect(()=>{
-      checkAdmin()
-    },[])
+  
   return (
     <div style={{backgroundColor:'white'}}>
 
-      <Header isAdmin={isAdmin}/>
+      <Header />
       <Routes>
         <Route path='/home' element={<Home/>}/>
         <Route path='/movie/:id' element={<Movie/>}/>
@@ -44,9 +30,10 @@ function App() {
         <Route path='/theatrelist' element={<List theatrelist/>}/>
         <Route path='/movielist' element={<List/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/' element={<Auth setData={setData}/>}/>
+        <Route path='/' element={<Auth />}/>
         <Route path='/register' element={<Auth register />}/>
         <Route path='/checkout/:id' element={<Checkout/>}/>
+        <Route path='/user-list' element={<UserList/>}/>
       </Routes>
       <Footer/>
     </div>

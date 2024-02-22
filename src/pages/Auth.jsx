@@ -9,7 +9,7 @@ import swal from 'sweetalert'
 
 
 
-function Auth({register,setData}) {
+function Auth({register}) {
     const navigate = useNavigate()
     const [userData,setUserdata] = useState({
         name:"",
@@ -43,7 +43,6 @@ function Auth({register,setData}) {
                     password:""
                 })
                 //move to login
-
                 navigate('/')
             }
             else{
@@ -72,8 +71,8 @@ function Auth({register,setData}) {
             console.log(result);
 
             if(result.status === 200){
-                sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
-                setData(userData)
+                sessionStorage.setItem("UserEmail",JSON.stringify(result.data.existingUser.email))
+                //setData(userData)
                 //sessionStorage.setItem("token",result.data.token)
                 swal({
                     title: 'Good Job 😍',
@@ -101,13 +100,10 @@ function Auth({register,setData}) {
             }
         }
     }
-
-
-
-
     
   return (
     <div style={{height:'100vh'}} className='login-container'>
+        <h1 className='logoname text-light text-center'><Link  style={{textDecoration:'none',color:'black'}} to={'/home'}>Movifydot</Link><span style={{color:'red'}}>com</span></h1>
         <Row>
             <Col>
                 <div className="d-flex justify-content-center align-items-center" style={{height:'90vh'}}>
@@ -143,7 +139,7 @@ function Auth({register,setData}) {
                         </div>
                         {register?
                             <p className='text-center'>If already a user? please <Link to={'/'} style={{textDecoration:'none'}}> Login</Link></p>:
-                            <p className='text-center'>If not an existing user? please <Link to={'/register'} style={{textDecoration:'none'}}> register</Link></p>
+                            <p className='text-center'>If not an existing user? please <Link to={'/register'} style={{textDecoration:'none'}}> Register</Link></p>
                         }
                     </div>
                 </div>

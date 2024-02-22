@@ -37,7 +37,12 @@ function Movie() {
               <img className='cover-img' src={getMovie.coverimg}  alt="" height={'500px'} width={'100%'}/>
             </div>
             <div className="coverover position-relative" style={{width:'100%',height:'500px'}}>
-                <Button className='booking-btn rounded' variant='danger' size='lg'><Link style={{textDecoration:'none',color:'white'}} to={`/theatres/${getMovie._id}`}>Book Tickets</Link></Button>
+                
+                <Button className='booking-btn rounded' variant='danger' size='lg'><Link style={{textDecoration:'none',color:'white'}} to={`/theatres/${getMovie._id}`}>Book Tickets <i class="fi fi-ss-receipt"></i></Link></Button>
+                <div className='text-light mt-3' >
+                  <h3 className='fw-bold' style={{textShadow:"2px 2px black"}}>About Movie</h3>
+                  <p className='fw-bold ' style={{textShadow:"2px 2px black"}}>{getMovie.plot}</p>
+                </div>
             </div>
           </div>
         </Col>
@@ -51,8 +56,8 @@ function Movie() {
           <Row>
             <Col>
               <div className='info-card text-light rounded p-3 mb-2' style={{height:"130px"}}>
-                <h3 className='fw-bold'>About Movie</h3>
-                <p className='fw-bold '>{getMovie.plot}</p>
+                <h3 className='fw-bold'>Languages</h3>
+                <p className='fw-bold '>{getMovie.language}</p>
               </div>
               <div className='info-card text-light rounded p-3  mb-2' style={{height:"130px"}}>
                 <h3 className='fw-bold'>Cast</h3>

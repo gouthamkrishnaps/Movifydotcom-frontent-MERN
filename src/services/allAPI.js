@@ -51,3 +51,13 @@ export const deleteMovieAPI = async(movieId)=>{
 export const deleteTheatreAPI = async(theatreId)=>{
     return await commonApi("DELETE",`${BASE_URL}/theatre/delete/${theatreId}`,{})
 }
+
+//get all users
+export const getAllUsersAPI = async()=>{
+    return await commonApi("GET",`${BASE_URL}/users/fetch`)
+}
+
+//delete user
+export const deleteUserAPI = async(userId)=>{
+    return await commonApi("DELETE",`${BASE_URL}/user/delete/${userId}`,{})
+}

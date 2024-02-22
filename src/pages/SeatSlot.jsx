@@ -49,13 +49,11 @@ function SeatSlot() {
       populateUI();
     }, []);
 
-    // Save selected movie index and price
     const setMovieData = (movieIndex, moviePrice) => {
       localStorage.setItem('selectedMovieIndex', movieIndex);
       localStorage.setItem('selectedMoviePrice', moviePrice);
     };
 
-    // update total and count
     const updateSelectedCount = () => {
       const selectedSeats = document.querySelectorAll('.row .seat.selected');
       const seats = document.querySelectorAll('.row .seat:not(.occupied)');
@@ -76,7 +74,6 @@ function SeatSlot() {
       setNumOfSeats(selectedSeatsCount)
     };
 
-    // get data from local storage and populate UI
     const populateUI = () => {
       const storedSelectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
       const seats = document.querySelectorAll('.row .seat:not(.occupied)');
@@ -95,7 +92,6 @@ function SeatSlot() {
       }
     };
 
-    // Movie select event
     const handleMovieSelectChange = (e) => {
       const selectedPrice = +e.target.value;
       setTicketPrice(selectedPrice);
@@ -103,13 +99,35 @@ function SeatSlot() {
       updateSelectedCount();
     };
 
-    // Seat click event
     const handleSeatClick = (e) => {
       if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
         e.target.classList.toggle('selected');
         updateSelectedCount();
       }
     };
+
+    const [paymentDetials,setPaymentDetials] = useState({
+      cardNumber : "",
+      cardName : "",
+      expiry : "",
+      securityCode :""
+    })
+
+    const checkPayment = () =>{
+
+      const {cardNumber, cardName, expiry, securityCode} = paymentDetials
+
+      if(!cardNumber || !cardName || !expiry || !securityCode){
+        swal({
+          title: 'Oops',
+          text: `Please fill the form completely`,
+          icon: 'info',
+      });
+      }
+      else{
+        setPayment()
+      }
+    }
 
 
   return (
@@ -340,26 +358,26 @@ function SeatSlot() {
                     <form action="">
                       <div className='p-2'>
                         <label htmlFor='cardnum'>Card number</label>
-                        <input className='form-control w-100 rounded ' id='cardnum' type="text" placeholder='3451 5678 2389 3754'/>
+                        <input className='form-control w-100 rounded ' onChange={(e)=>setPaymentDetials({...paymentDetials,cardNumber:e.target.value})} value={paymentDetials.cardNumber} id='cardnum' type="text" placeholder='3451 5678 2389 3754'/>
                       </div>
                       <div className='p-2'>
                         <label htmlFor='cardname'>Name on card</label>
-                        <input className='form-control w-100 rounded ' id='cardname' type="text" placeholder='John Emmanual'/>
+                        <input className='form-control w-100 rounded ' onChange={(e)=>setPaymentDetials({...paymentDetials,cardName:e.target.value})} value={paymentDetials.cardName} id='cardname' type="text" placeholder='John Emmanual'/>
                       </div>
                       <div className="d-flex gap-2 w-100">
                         <div className='p-2 w-100'>
                           <label htmlFor="date">Expiry date</label>
-                          <input className='form-control w-100 rounded ' id='date' type="date" placeholder=''/>
+                          <input className='form-control w-100 rounded ' onChange={(e)=>setPaymentDetials({...paymentDetials,expiry:e.target.value})} value={paymentDetials.expiry} id='date' type="date" placeholder=''/>
                         </div>
                         <div className='p-2 w-100'>
                           <label htmlFor="code">Security code</label>
-                          <input className='form-control w-100  rounded ' id='code' type="password" placeholder='* * * *'/>
+                          <input className='form-control w-100  rounded ' onChange={(e)=>setPaymentDetials({...paymentDetials,securityCode:e.target.value})}  value={paymentDetials.securityCode} id='code' type="password" placeholder='* * * *'/>
                         </div>
                       </div>
                     </form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button className='w-100' variant="primary" onClick={setPayment}>${numOfSeats*110}</Button>
+                    <Button className='w-100' variant="primary" onClick={checkPayment}>${numOfSeats*110}</Button>
                   </Modal.Footer>
         </Modal>
     </div>

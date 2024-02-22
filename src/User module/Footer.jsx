@@ -1,8 +1,20 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import './Footer.css'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation();
+
+  if (location.pathname === '/' || location.pathname === '/register') {
+      
+      return null;
+  }
+  const logout = ()=>{
+      sessionStorage.removeItem("UserEmail")
+      navigate('/')
+  }
   return (
     <div className='shadow text-light pt-5' style={{backgroundColor:'black'}}>
       <h3 className='logoname text-light text-center'>Movifydot<span style={{color:'red'}}>com</span></h3>

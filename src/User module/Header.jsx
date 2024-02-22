@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, json, useLocation, useNavigate } from 'react-router-dom';
 
 
-function Header({isAdmin}) {
-    console.log(isAdmin);
+function Header() {
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    if (location.pathname === '/' || location.pathname === '/register') {
+        
+        return null;
+    }
+    const logout = ()=>{
+        sessionStorage.removeItem("UserEmail")
+        navigate('/')
+    }
+
   return (
     <div>
         <Navbar sticky='top' className='shadow' expand="lg" data-bs-theme='dark' style={{backgroundColor:'black'}}>
@@ -16,12 +27,12 @@ function Header({isAdmin}) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='m-auto'>
-
-                <a href='/dashboard' className='btn btn-danger rounded-pill'>Admin Dashboard</a>
-
+            {/* {isAdmin?
+                <a href='/dashboard' className='btn btn-outline-light rounded-pill'>Admin Dashboard</a>:null
+            } */}
             </Nav>
             <Nav className="text-light">
-            <Form inline>
+            {/* <Form inline>
                 <Row>
                 <Col xs="auto">
                     <Form.Control
@@ -34,7 +45,8 @@ function Header({isAdmin}) {
                     <Button style={{background:'transparent',border:'none'}} type="submit"><i style={{color:'white'}} className="fa-solid fa-magnifying-glass"></i></Button>
                 </Col>
                 </Row>
-            </Form>
+            </Form> */}
+            <Button variant='outline-light' className='rounded-pill' onClick={logout}>Logout <i class="fa-solid fa-right-from-bracket"></i></Button>
             </Nav>
             </Navbar.Collapse>
         </Container>

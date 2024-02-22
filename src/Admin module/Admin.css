@@ -10,22 +10,28 @@
     width: 200px;
 }
 .admin-card{
-    background: linear-gradient(to bottom, #ff0000 , #f95d03e3 );
+    background: linear-gradient(to right, #ffffff , #94ade4 );
+    text-shadow: 1px 1px rgb(85, 83, 83);
 }
 .card1{
-    background-color: #44b44e;
+    background: linear-gradient(to right,  #000000 ,#196e20 , #26ff00 );
     height: 92px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .card2{
-    background-color: #00bfff;
+    background: linear-gradient(to right,  #000000 ,#195d80, #2d9299 );
     height: 92px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .card3{
-    background-color: #7c7c7c;
-     height: 92px;
-     color: white;
+    background: linear-gradient(to right, #000000 ,#9b9d18, #e7eb0a );
+    height: 92px;
+    color: rgb(255, 255, 255);
+}
+.card4{
+    height: 238px;
+    background: linear-gradient(to right, #946ccc , #ffffff );
+    color: rgb(0, 0, 0);
 }
 .movieAddCard{
     background-color: rgb(16, 16, 58);
