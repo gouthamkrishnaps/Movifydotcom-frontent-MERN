@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import React from 'react'
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link, json, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 function Header() {
@@ -15,9 +16,22 @@ function Header() {
         return null;
     }
     const logout = ()=>{
-        sessionStorage.removeItem("UserEmail")
-        navigate('/')
+        swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to logout from Movifydotcom?",
+            icon: "warning",
+            dangerMode: true,
+        })
+        .then(loginout => {
+        if (loginout) {
+            sessionStorage.removeItem("UserEmail")
+            navigate('/')
+            swal("Logged out!", "Your are successfully logged out of the website!", "success");
+        }
+        });
+        
     }
+    
 
   return (
     <div>
